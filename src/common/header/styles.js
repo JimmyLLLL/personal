@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
-    height:50px;
+    height:.5rem;
+    font-size:.2rem;
     background-color:black;
     color:white;
-    line-height:50px;
+    line-height:.5rem;
     text-align:center;
-    position:absolute;
     width:100%;
     z-index:2;
 `

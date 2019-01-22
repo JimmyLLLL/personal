@@ -1,7 +1,4 @@
 import { createGlobalStyle }  from 'styled-components'
-import styled from 'styled-components'
-import bg from './resource/bg.jpg'
-import { getAvailHeightHeightAppBg } from './function.js'
 
 //reset css使得各个浏览器的值一样
 export const GlobalStyle = createGlobalStyle`
@@ -49,36 +46,3 @@ export const GlobalStyle = createGlobalStyle`
 		border-spacing: 0;
 	}
 `;
-
-export const Bgpic = styled.div`
-	background:url(${bg});
-	width:100%;
-	min-width:${getAvailHeightHeightAppBg()}
-	background-size:100% 100%;
-	background-repeat:no-repeat;
-	height:100%;
-	z-index:-1;
-	position:absolute;
-`
-
-export const BgpicWrapper = styled.div`
-	width:100%;
-	height:100%;
-	position:absolute;
-	overflow:hidden;
-`
-export const Bottom = styled.div`
-	position:absolute;
-	bottom:0;
-	height:40px;
-	line-height:40px;
-	text-align:center;
-	color:white;
-	width:100%;
-	.left{
-		margin-right:60px;
-	}
-	.right{
-		margin-left:60px;
-	}
-`

@@ -1,4 +1,3 @@
-
 export function getAvailHeightHeightAppBg(){
     return window.screen.availHeight*1.48+'px'
 }

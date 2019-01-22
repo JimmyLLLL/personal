@@ -5,7 +5,7 @@ import { HeaderWrapper } from './styles';
 class Header extends Component {
     render() {
          return (
-             <Fragment>
+             <Fragment>          
                  <HeaderWrapper>
                      JimmyLam
                  </HeaderWrapper>
