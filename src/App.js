@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component,Fragment } from 'react';
+import { GlobalStyle,Bgpic,BgpicWrapper,Bottom } from './style.js';
+import Header from './common/header';
+import Body from './common/body';
+import { BrowserRouter,Route,Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Fragment>
+        <GlobalStyle/>
+        <BgpicWrapper>
+          <Bgpic></Bgpic>
+        </BgpicWrapper>
+        <Header/>
+        <BrowserRouter>
+          <Route path="/" exact component={Body}></Route>
+        </BrowserRouter>
+        <Bottom>
+          <span className="left">开发者：JimmyLam</span>
+          <span className="right">Wechat:Jm18025012926</span>
+        </Bottom>
+      </Fragment>
     );
   }
-}
-
+} 
 export default App;
