@@ -1,0 +1,56 @@
+import styled from 'styled-components'
+
+export const Header = styled.div`
+    height:205px;
+    background-color:#f0f4fa;
+    .left{
+        line-height:100%;
+        float:left;
+        width:50%;
+        height:100%;
+        font-weight:bold;
+        .nameTop{
+            color:#333333;
+            margin-left:87px;
+            margin-top:25px;
+            font-size:45px;
+            .rightSpan{
+                margin-left:62px;
+            }
+        }
+        .proBottom{
+            letter-spacing:25px;
+            font-size:14px;
+            margin-left:87px;
+            margin-top:-50px;
+            .rightPro{
+                margin-left:35px;
+            }
+        }
+        .bottomStick{
+            width:130px;
+            height:7px;
+            margin-top:-25px;
+            margin-left:87px;
+            background-color:#4990e2;
+        }
+
+    }
+    .right{
+        float:right;
+        width:50%;
+        height:100%;
+        .imgWrapper{
+            width:145px;
+            height:145px;
+            border-radius:145px;
+            margin-top:35px;
+            margin-left:300px;
+            overflow:hidden;
+            .rightImg{
+                width:144.75px;
+                height:192.75px;
+            }
+        }
+    }
+`

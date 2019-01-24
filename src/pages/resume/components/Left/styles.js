@@ -1,0 +1,64 @@
+import styled from 'styled-components'
+
+export const LeftWrapper = styled.div`
+    width:250px;
+    background-color:#f0f4fa;
+    float:left;
+    padding-bottom:20px;
+    .Info{
+        color:#4b91e2;
+        font-size:15px;
+        margin-left:42px;
+        margin-top:25px;
+        letter-spacing:2px;
+        font-weight:bold;
+    }
+    .InfoContentWrapper{
+        margin-left:42px;
+        margin-top:27.5px;
+    }
+    .InfoContent{
+        height:55px;
+
+    }
+    .InfoTitle{
+        position:relative;
+        top:12.5px;
+        font-size:12px;
+        color:#515153;
+        font-weight:bold;
+    }
+    .InfoDetail{
+        position:relative;
+        top:20px;
+        font-size:15px;
+        color:#7c7d7e;
+    }
+    .EducationContentWrapper{
+        margin-left:42px;
+    }
+    .EducationSchool{
+        margin-top:17px;
+        font-size:17px;
+        font-weight:bold;
+        color:#3b3b3b;
+    }
+    .EducationTime{
+        margin-top:17px;
+        font-size:15px;
+        color:#363636;
+    }
+    .EducationAddition{
+        font-weight:bold;
+        margin-top:20px;
+        font-size:12px;
+        color:#818283;
+    }
+    .HobbiesItem{
+        margin-top:19px;
+        font-size:15px;
+        font-weight:bold;
+        color:#3b3b3b;        
+    }
+
+`

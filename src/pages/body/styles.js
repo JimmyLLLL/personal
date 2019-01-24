@@ -23,11 +23,12 @@ const CircleCommon = `
     transition:.3s;
     cursor: pointer;
     span:after {
+        transition: 0.3s;
         content: '»';
         position: absolute;
         opacity:0;
         top: 0;
-        right: .3rem;
+        right: .5rem;
       }
     &:hover {
         background-color:green;
@@ -36,6 +37,7 @@ const CircleCommon = `
             opacity:1;
         };
         span{
+            transition: 0.3s;
             padding-right:.3rem;
         }
       }

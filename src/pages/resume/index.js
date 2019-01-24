@@ -1,20 +1,22 @@
 import React,{ Component,Fragment } from 'react';
+import { ResumeWrapper,BodyWrapper } from './styles';
+import HeaderContent from './components/Header'
+import Left from './components/Left'
+import Right from './components/Right'
+
 
 
 class Resume extends Component {
     render() {
          return (
              <Fragment>
-                 <div>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                     <p>我是简历</p>
-                 </div>
+                 <ResumeWrapper>
+                     <HeaderContent></HeaderContent>
+                     <BodyWrapper>
+                         <Left></Left>
+                         <Right></Right>
+                     </BodyWrapper>
+                 </ResumeWrapper>
              </Fragment>
         )       
     }   
