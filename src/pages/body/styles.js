@@ -1,25 +1,25 @@
 import styled from 'styled-components'
 import bg from '../../resource/bg.jpg'
 
-import { getClientWidth,getCountResult } from '../../function.js'
-const WidthHeight = getCountResult(0.078125,getClientWidth())
-const CircleFontSize = getCountResult(0.013,getClientWidth())
-const WrapperWidth = getCountResult(0.53125,getClientWidth())
-const TowLeft = getCountResult(0.073,getClientWidth())
-const ThreeLeft = getCountResult(0.146,getClientWidth())
-const FourLeft = getCountResult(0.219,getClientWidth())
-
-
 const CircleCommon = `
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        display:block;
+        left:0;
+        margin:20px auto;
+        width:80px;
+        height:80px;
+        line-height:80px;
+        font-size:14px;
+    } 
     position:relative;
-    width:${WidthHeight};
-    height:${WidthHeight};
+    width:150px;
+    height:150px;
     border-radius:5000px;
     display:inline-block;
     text-align:center;
-    line-height:${WidthHeight};
+    line-height:150px;
     color:white;
-    font-size:${CircleFontSize};
+    font-size:25px;
     transition:.3s;
     cursor: pointer;
     span:after {
@@ -28,17 +28,17 @@ const CircleCommon = `
         position: absolute;
         opacity:0;
         top: 0;
-        right: .5rem;
+        right: 50px;
       }
     &:hover {
         background-color:green;
-        width:1.8rem;
+        width:180px;
         span:after{
             opacity:1;
         };
         span{
             transition: 0.3s;
-            padding-right:.3rem;
+            padding-right:30px;
         }
       }
 
@@ -46,31 +46,41 @@ const CircleCommon = `
 
 
 export const BodyWrapper = styled.div`
-    width:${WrapperWidth};
+    width:1020px;
     margin:0 auto;
     overflow:hidden;
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        width:100%;
+    } 
 `
 
 export const CircleWrapper = styled.div`
     position:absolute;
     top:45%;
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        top:13%;
+        a{
+            text-decoration:none;
+        }
+        width:100%;
+    } 
 `
 export const Circleone = styled.div`
     ${CircleCommon}
     background-color:#34b3ff;
 `
 export const Circletwo = styled.div`
-    left:${TowLeft};
+    left:140px;
     background-color:#f3cc07;
     ${CircleCommon}
 `
 export const Circlethree = styled.div`
     ${CircleCommon}
-    left:${ThreeLeft}
+    left:280px;
     background-color:#a423d1;
 `
 export const Circlefour = styled.div`
-    left:${FourLeft};
+    left:420px;
     background-color:#f82979;
     ${CircleCommon}
 `

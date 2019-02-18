@@ -3,16 +3,16 @@ import styled from 'styled-components';
 export const BottomWrapper = styled.div`
 	position:absolute;
 	bottom:0;
-	height:.4rem;
-	line-height:.4rem;
+	height:40px;
+	line-height:40px;
 	text-align:center;
-	font-size:.12rem;
+	font-size:12px;
 	color:white;
 	width:100%;
 	.left{
-		margin-right:.6rem;
+		margin-right:60px;
 	}
 	.right{
-		margin-left:.6rem;
+		margin-left:60px;
 	}
 `

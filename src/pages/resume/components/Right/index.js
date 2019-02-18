@@ -12,12 +12,12 @@ const  right = (props) => (
                         <div className="titleAtime"><div className="smallTitle">{item.contentOne}</div><div className="time">{item.time}</div></div>
                         {item.contentTwo.map((item,index)=>{
                             return(
-                            <div className="smallsmallTitle" key="index">{item}</div>                                
+                            <div className="smallsmallTitle" key={index}>{item}</div>                                
                             )
                         })}
                         {item.contentThree.map((item,index)=>{
                             return(
-                            <div className="content" key="index">{item}</div>                                 
+                            <div className="content" key={index}>{item}</div>                                 
                             )
                         })}
    

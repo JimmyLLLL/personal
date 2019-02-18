@@ -4,7 +4,6 @@ export const Header = styled.div`
     height:205px;
     background-color:#f0f4fa;
     .left{
-        line-height:100%;
         float:left;
         width:50%;
         height:100%;
@@ -12,7 +11,7 @@ export const Header = styled.div`
         .nameTop{
             color:#333333;
             margin-left:87px;
-            margin-top:25px;
+            margin-top:60px;
             font-size:45px;
             .rightSpan{
                 margin-left:62px;
@@ -22,7 +21,7 @@ export const Header = styled.div`
             letter-spacing:25px;
             font-size:14px;
             margin-left:87px;
-            margin-top:-50px;
+            margin-top:15px;
             .rightPro{
                 margin-left:35px;
             }
@@ -30,7 +29,7 @@ export const Header = styled.div`
         .bottomStick{
             width:130px;
             height:7px;
-            margin-top:-25px;
+            margin-top:15px;
             margin-left:87px;
             background-color:#4990e2;
         }
