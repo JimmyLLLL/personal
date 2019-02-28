@@ -7,6 +7,31 @@ export const CenterWrapper = styled.div`
     background-color:white;
     padding:10px;
     .wrapper{
+        .noIframe{
+            width:0px;
+            height:0px;
+        }
+        form{
+            .file{
+                display:none;
+            }
+            .submit{
+                text-align:center;
+                font-size:15px;
+                border-radius:5px;
+                color:white;
+                padding:5px;
+                margin-top:30px;
+                background:green;
+                width:420px;
+            }
+            .realSubmit{
+                display:none;
+            }
+            .username{
+                display:none
+            }
+        }
         background-color:blue;
         line-height:20px;
         .key:not(:first-child){
@@ -35,6 +60,21 @@ export const CenterWrapper = styled.div`
             border-radius:5px;
             text-align:center;
             background-color:green;
+        }
+        .avatarWrapper{
+            position:relative;
+            left:0px;
+            right:0px;
+            height:120px;
+            width:120px;
+            overflow:hidden;
+            .avatar{
+                border-radius:20px;
+                width:120px;
+                height:120px;
+                cursor:pointer;
+            }
+
         }
     }
 `

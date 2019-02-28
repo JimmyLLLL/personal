@@ -20,7 +20,7 @@ class Article extends Component{
                         return(
                             <div key={index}>
                                 <div className="title">{item.title}</div>
-                                <div className="author">作者：{item.name}</div>
+                                <div className="author">作者：{item.name}<span>ID：{item.uid}</span></div>
                                 <div className="content" dangerouslySetInnerHTML = {{ __html: item.content }}></div>
                             </div>
                         )

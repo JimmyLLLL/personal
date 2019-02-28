@@ -10,7 +10,8 @@ const defaultState = {
     showRES:false,
     account:'',
     password:'',
-    readyLogin:false,    
+    readyLogin:false,
+    avator:'',    
     center:'个人中心',
     edit:'写文章',
     showEdit:false,
@@ -33,6 +34,18 @@ const defaultState = {
 
 
 export default (state = defaultState,action)=>{
+    if(action.type === constants.GETNEWAVATOR){
+        return{
+            ...state,
+            avator:'http://localhost:8003/uploads/avator/'+action.newAvator
+        }
+    }
+    if(action.type === constants.AVATORUSER){
+        return{
+            ...state,
+            avatorUser:action.avatorUser
+        }
+    }
     if(action.type === constants.PERSONALINFOCHANGE){
         if(action.code===1){
             alert('修改成功')
@@ -244,18 +257,25 @@ export default (state = defaultState,action)=>{
             storage.token = action.token
             storage.account = action.account
             storage.nickname = action.nickname
-            alert('登陆成功')
+            if(action.auto!=='auto'){
+                alert('登陆成功')
+            }
             return{
                 ...state,
                 AjaxWord:action.word,
                 AjaxNickname:action.nickname,
+                account:action.account,
                 readyLogin:true,
-                showLogin:false
+                showLogin:false,
+                avator:'http://localhost:8003/uploads/avator/'+action.avator
             }            
         }else if(action.code===-2){
             alert('用户不存在')
         }else if(action.code===-1){
-            alert('密码不正确')
+            if(action.auto!=='auto'){
+                alert('密码不正确')
+            }
+            
         }
 
     }
@@ -275,14 +295,12 @@ export default (state = defaultState,action)=>{
     }
     if(action.type === constants.HANDLELOGOUT)
     {
-        if(action.code===1){
-            storage.account=''
-            return{
-                ...state,
-                readyLogin:false
-            }
-        }else if(action.code===-1){
-            alert('服务器出现问题，请联系开发者')
+        storage.account=''
+        storage.token=''
+        storage.nickname=''
+        return{
+            ...state,
+            readyLogin:false
         }
     }
     return state

@@ -12,6 +12,9 @@ class Blog extends Component {
         super(props)
         this.handleScroll = this.handleScroll.bind(this)
     }
+    componentDidMount(){
+        this.props.memoryLogin()
+    }
     handleScroll(){
         const clientHeight = this.refs.Bg.clientHeight; //可视区域高度
         const scrollTop  = this.refs.Bg.scrollTop;  //滚动条滚动高度
@@ -27,7 +30,7 @@ class Blog extends Component {
              <Fragment>
                 <Header>
                 </Header>
-                {this.props.readyLogin?<AllReadyLogin><div className="welcome">欢迎您，{this.props.AjaxNickname}</div><div className="logout" onClick={()=>this.props.handleLogout()}>登出</div></AllReadyLogin>:<LoginLogout><li onClick={this.props.handleLoginBtn}>登入</li><li onClick={this.props.handleResBtn}>注册</li></LoginLogout>}
+                {this.props.readyLogin?<AllReadyLogin><div className="welcome">欢迎您，{this.props.AjaxNickname||this.props.account}</div><div className="logout" onClick={()=>this.props.handleLogout()}>登出</div></AllReadyLogin>:<LoginLogout><li onClick={this.props.handleLoginBtn}>登入</li><li onClick={this.props.handleResBtn}>注册</li></LoginLogout>}
                 {this.props.readyLogin?<PersonalCenter onClick={this.props.centerClick}>{this.props.center}</PersonalCenter>:''}
                 {this.props.readyLogin?<ShowEdit onClick={this.props.editClick}>{this.props.edit}</ShowEdit>:''}
                 <Bg onScroll={this.handleScroll} ref="Bg">
@@ -51,12 +54,19 @@ const mapState = (state)=>{
         showArticle:state.blog.showArticle,
         edit:state.blog.edit,
         page:state.blog.page,
-        NoData:state.blog.NoData
+        NoData:state.blog.NoData,
+        account:state.blog.account
     }
 }
 
 const mapDispath = (dispatch)=>{
     return{
+        memoryLogin(){
+            const storage = window.localStorage
+            if(storage.token){
+                dispatch(actionCreator.memoryLogin(storage.token))
+            }
+        },
         centerClick(){
             dispatch(actionCreator.centerClick());
         },

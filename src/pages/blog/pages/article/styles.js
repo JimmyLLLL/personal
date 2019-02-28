@@ -18,5 +18,8 @@ export const ArticleWrapper = styled.div`
     .author{
         text-align:center;
         line-height:35px;
+        span{
+            margin-left:25px;
+        }
     }
 `

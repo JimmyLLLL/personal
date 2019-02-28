@@ -38,18 +38,21 @@ export const LoginAJAX = (account,password)=>{
             const token = res.data.token
             const account = res.data.account
             const nickname = res.data.nickname
+            const avator = res.data.avator
             const word = res.data.word
-            dispatch(RealLoginAJAX(code,token,account,nickname,word))
+            dispatch(RealLoginAJAX(code,token,account,nickname,word,'',avator))
         })
     }
 }
-export const RealLoginAJAX = (code,token,account,nickname,word)=>({
+export const RealLoginAJAX = (code,token,account,nickname,word,auto='',avator)=>({
     type:constants.LOGINAJAX,
     code,
     token,
     account,
     nickname,
-    word
+    word,
+    auto,
+    avator
 })
 
 
@@ -74,16 +77,12 @@ export const handleLogout = () => {
     const token = storage.token
     const account = storage.account
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/logout',{account}).then((res)=>{
-            const code = res.data.code
-            dispatch(RealHandleLogout(code))
-        })
+            dispatch(RealHandleLogout())
     }
 }
 
-export const RealHandleLogout = (code) => ({
-    type:constants.HANDLELOGOUT,
-    code
+export const RealHandleLogout = () => ({
+    type:constants.HANDLELOGOUT
 })
 
 export const centerClick = () => ({
@@ -193,4 +192,68 @@ export const RealPersonalInfoChange = (code,data) => ({
     type:constants.PERSONALINFOCHANGE,
     code,
     data
+})
+
+export const memoryLogin = (token) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/memoryLogin',{},{
+            headers:{
+                'Authorization':token
+            }           
+        }).then((res)=>{
+            const code = res.data.code
+            const token = res.data.token
+            const account = res.data.account
+            const nickname = res.data.nickname
+            const word = res.data.word
+            const auto = 'auto'
+            const avator = res.data.avator
+            dispatch(RealLoginAJAX(code,token,account,nickname,word,auto,avator))
+        })
+    }
+}
+
+export const avatorSubmitValid = (submitDom,noIframe) => {
+    const token = storage.token
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/uploadAvatorValid',{},{
+            headers:{
+                'Authorization':token
+            }           
+        }).then((res)=>{
+            if(res.data.code===1){
+                dispatch(AvatorUser(res.data.account))
+                submitDom.click()
+                setTimeout(()=>{
+                    const account = window.localStorage.account
+                    dispatch(getNewAvator(account))
+                },500)
+                
+            }else{
+                dispatch(LoginTimeOut(res.data.code))
+            }
+        })        
+    }
+}
+export const LoginTimeOut = (code) => ({
+    type:constants.PERSONALINFOCHANGE,//公用接口，处理登陆超时
+    code
+})
+
+export const AvatorUser = (avatorUser) => ({
+    type:constants.AVATORUSER,
+    avatorUser
+})
+
+export const getNewAvator = (account) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/getNewAvator',{account}).then((res)=>{
+            const avator = res.data.avator
+            dispatch(RealGetNewAvator(avator))
+        })
+    }
+}
+export const RealGetNewAvator = (newAvator) => ({
+    type:constants.GETNEWAVATOR,
+    newAvator
 })
