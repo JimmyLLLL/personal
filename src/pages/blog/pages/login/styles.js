@@ -70,7 +70,7 @@ export const BottomWrapper = styled.div`
         color:white;
         border-radius:5px;
         position:absolute;
-        margin-top:220px;
+        margin-top:250px;
         height:40px;
     }
 `

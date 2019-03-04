@@ -28,34 +28,103 @@ const defaultState = {
     word:'',
     nickname:'',
     AjaxWord:'',
-    AjaxNickname:''
+    AjaxNickname:'',
+    allowAccount:true,
+    allowPassword:true,
+    existAccount:false,
+    showComment:false,
+    showCommentWord:'我也评论两句~',
+    commentText:'',
+    commentList:[]
 };
 
 
 
 export default (state = defaultState,action)=>{
-    if(action.type === constants.GETNEWAVATOR){
-        return{
-            ...state,
-            avator:'http://localhost:8003/uploads/avator/'+action.newAvator
+    if(action.type === constants.GETCOMMENTAJAX){
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.commentList = action.value.reverse()
+        return newState
+    }
+    if(action.type === constants.SENDCOMMENT){
+        if(action.code===1){
+            let arr = state.commentList
+            arr.unshift(action.data)
+            const newState = JSON.parse(JSON.stringify(state))
+            newState.commentList = arr
+            newState.commentText = ''
+            alert('发表成功')
+            return newState
+        }else{
+            alert('账号已过期')
         }
+    }
+    if(action.type === constants.COMMENTCHANGE){
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.commentText = action.value
+        return newState
+    }
+    if(action.type === constants.SHOWCOMMENTTEXT){
+        const newState = JSON.parse(JSON.stringify(state))
+        if(state.showCommentWord==='折叠回来'){
+            newState.showComment = false
+            newState.showCommentWord = '我也评论两句~'
+            return newState
+        }else{
+            newState.showComment = true
+            newState.showCommentWord = '折叠回来'
+            return newState     
+        }
+    }
+    if(action.type === constants.CHECKACCOUNT){
+        const newState = JSON.parse(JSON.stringify(state))
+        if(action.code === 1){
+            newState.existAccount = true
+            return newState
+        }else{
+            newState.existAccount = false
+            return newState
+        }
+    }
+    if(action.type === constants.ALLOWACCOUNT){
+        const newState = JSON.parse(JSON.stringify(state))
+        if(action.flag===false){
+            newState.allowAccount = false
+            return newState
+        }else{
+            newState.allowAccount = true
+            return newState
+        }
+    }
+    if(action.type === constants.ALLOWPASSWORD){
+        const newState = JSON.parse(JSON.stringify(state))
+        if(action.flag===false){
+            newState.allowPassword = false
+            return newState
+        }else{
+            newState.allowPassword = true
+            return newState
+        }
+    }
+    if(action.type === constants.GETNEWAVATOR){
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.avator = 'http://localhost:8003/uploads/avator/'+action.newAvator
+        return newState
     }
     if(action.type === constants.AVATORUSER){
-        return{
-            ...state,
-            avatorUser:action.avatorUser
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.avatorUser = action.avatorUser
+        return newState
     }
     if(action.type === constants.PERSONALINFOCHANGE){
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){
             alert('修改成功')
-            return{
-                ...state,
-                word:'',
-                nickname:'',
-                AjaxNickname:action.data.nickname,
-                AjaxWord:action.data.word
-            }            
+            newState.word = ''
+            newState.nickname = ''
+            newState.AjaxNickname = action.data.nickname
+            newState.AjaxWord = action.data.word
+            return newState            
         }else if(action.code===0){
             alert('服务器挂了')
         }else if(action.code===-1){
@@ -67,77 +136,66 @@ export default (state = defaultState,action)=>{
 
     }
     if(action.type === constants.NICKNAMECHANGE){
-        return{
-            ...state,
-            nickname:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.nickname = action.value
+        return newState
     }
     if(action.type === constants.WORDCHANGE){
-        return{
-            ...state,
-            word:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.word = action.value
+        return newState
     }
     if(action.type === constants.ONEBLOG){
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code === 1){
-            return {
-                ...state,
-                enterBlog:action.data
-            }
+            newState.enterBlog = action.data
+            return newState
         }else{
             alert('获取数据失败')
         }
     }
     if(action.type === constants.NETHEIGHT){
-        return{
-            ...state,
-            netHeight:action.height
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.netHeight = action.height
+        return newState
 
     }
     if(action.type === constants.GETBLOG){
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code === 1){
             const data = action.data
             if(data.length!=0){
                 if(action.first=='first'){
-                    return {
-                        ...state,
-                        firstLoadingFinish:true,
-                        blogContent:[...data]
-                    }               
+                    newState.firstLoadingFinish = true
+                    newState.blogContent = [...data]
+                    return newState              
                 }
                 const page = state.page+1
-                return {
-                    ...state,
-                    page,
-                    blogContent:[...state.blogContent,...data]
-                }                
+                newState.page = page
+                newState.blogContent = [...newState.blogContent,...data]
+                return newState             
             }else{
-                return{
-                    ...state,
-                    LoadingWord:'没有更多数据~',
-                    NoData:true
-                }                
+                newState.LoadingWord = '没有更多数据~'
+                newState.NoData = true
+                return newState                
             }
 
         }
     }
     if(action.type === constants.EDITAJAX){
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.value === 1){
             alert('发表成功')
-            return {
-                ...state,
-                editTitle:'',
-                editContent:'',
-                edit:'写文章',
-                showEdit:false,
-                showArticle:true,
-                LoadingWord:'↓ Loading...',
-                firstLoadingFinish:false,
-                NoData:false,
-                page:1
-
-            }
+            newState.editTitle = ''
+            newState.editContent = ''
+            newState.edit = '写文章'
+            newState.showEdit = false
+            newState.showArticle = true
+            newState.LoadingWord = '↓ Loading...'
+            newState.firstLoadingFinish = false
+            newState.NoData = false
+            newState.page = 1
+            return newState
         }else if(action.value === 0){
             alert('服务器挂了')
         }else if(action.value === -1){
@@ -148,111 +206,98 @@ export default (state = defaultState,action)=>{
         }
     }
     if(action.type === constants.EDITTITLE){
-        return {
-            ...state,
-            editTitle:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.editTitle = action.value
+        return newState
     }
     if(action.type === constants.EDITCONTENT){
-        return {
-            ...state,
-            editContent:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.editContent = action.value
+        return newState
     }
     if(action.type === constants.SHOWEDIT){
+        const newState = JSON.parse(JSON.stringify(state))
         if(state.showEdit===false){
-            return {
-                ...state,
-                edit:'回到主页',
-                showCenter:false,
-                showArticle:false,
-                showEdit:!state.showEdit,
-                center:'个人中心'
-            }
+            newState.edit = '回到主页'
+            newState.showCenter = false
+            newState.showArticle = false
+            newState.showEdit = !newState.showEdit
+            newState.center = '个人中心'            
+            return newState
         }else{
-            return {
-                ...state,
-                edit:'写文章',
-                showCenter:false,
-                showArticle:true,
-                showEdit:!state.showEdit,
-                LoadingWord:'↓ Loading...',
-                firstLoadingFinish:false,
-                NoData:false,
-                page:1
-            }            
+            newState.edit = '写文章'
+            newState.showCenter = false
+            newState.showArticle = true
+            newState.showEdit = !newState.showEdit
+            newState.LoadingWord = '↓ Loading...'
+            newState.firstLoadingFinish = false
+            newState.NoData = false
+            newState.page = 1          
+            return newState            
         }
     }
     if(action.type === constants.SHOWCENTER)
     {
+        const newState = JSON.parse(JSON.stringify(state))
         if(state.showCenter===false){
-            return {
-                ...state,
-                showEdit:false,
-                showArticle:false,
-                center:'回到主页',
-                showCenter:!state.showCenter,
-                edit:'写文章'
-            }            
+            newState.showEdit = false
+            newState.showArticle = false
+            newState.center = '回到主页'
+            newState.showCenter = !newState.showCenter
+            newState.edit = '写文章'
+            return newState            
         }else{
-            return {
-                ...state,
-                showEdit:false,
-                center:'个人中心',
-                showArticle:true,
-                showCenter:!state.showCenter,
-                LoadingWord:'↓ Loading...',
-                firstLoadingFinish:false,
-                NoData:false,
-                page:1
-            }             
+            newState.showEdit = false
+            newState.showArticle = true
+            newState.center = '个人中心'
+            newState.showCenter = !newState.showCenter
+            newState.LoadingWord = '↓ Loading...'
+            newState.firstLoadingFinish = false
+            newState.NoData = false
+            newState.page = 1
+            return newState          
         }
  
     }
     if(action.type === constants.SHOW_LOGIN)
     {
-        return {
-            ...state,
-            showLogin:true
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.showLogin = true
+        return newState
     }
     if(action.type === constants.DIS_LOGIN)
     {
-        return {
-            ...state,
-            showLogin:false
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.showLogin = false
+        return newState
     }
     if(action.type === constants.DIS_RES)
     {
-        return{
-            ...state,
-            showRES:false
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.showRES = false
+        return newState
     }
     if(action.type === constants.SHOW_RES)
     {
-        return{
-            ...state,
-            showRES:true
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.showRES = true
+        return newState
     }
     if(action.type === constants.ACCOUNT)
     {
-        return{
-            ...state,
-            account:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.account = action.value
+        return newState
     }
     if(action.type === constants.PASSWORD)
     {
-        return{
-            ...state,
-            password:action.value
-        }
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.password = action.value
+        return newState
     }
     if(action.type === constants.LOGINAJAX)
     {
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){
             storage.token = action.token
             storage.account = action.account
@@ -260,15 +305,13 @@ export default (state = defaultState,action)=>{
             if(action.auto!=='auto'){
                 alert('登陆成功')
             }
-            return{
-                ...state,
-                AjaxWord:action.word,
-                AjaxNickname:action.nickname,
-                account:action.account,
-                readyLogin:true,
-                showLogin:false,
-                avator:'http://localhost:8003/uploads/avator/'+action.avator
-            }            
+            newState.AjaxWord = action.word
+            newState.AjaxNickname = action.nickname
+            newState.account = action.account
+            newState.readyLogin = true
+            newState.showLogin = false
+            newState.avator = 'http://localhost:8003/uploads/avator/'+action.avator
+            return newState           
         }else if(action.code===-2){
             alert('用户不存在')
         }else if(action.code===-1){
@@ -281,13 +324,11 @@ export default (state = defaultState,action)=>{
     }
     if(action.type === constants.REGISTERAJAX)
     {
-
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){
             alert('注册成功')
-            return{
-                ...state,
-                showRES:false
-            }
+            newState.showRES = false
+            return newState
         }else{
             alert('出错')
         }
@@ -295,13 +336,17 @@ export default (state = defaultState,action)=>{
     }
     if(action.type === constants.HANDLELOGOUT)
     {
+        const newState = JSON.parse(JSON.stringify(state))
         storage.account=''
         storage.token=''
         storage.nickname=''
-        return{
-            ...state,
-            readyLogin:false
-        }
+        newState.readyLogin = false
+        newState.showEdit = false
+        newState.showArticle = true
+        newState.showCenter = false
+        newState.center = '个人中心'
+        newState.edit = '写文章'
+        return newState
     }
     return state
 }

@@ -227,7 +227,7 @@ export const avatorSubmitValid = (submitDom,noIframe) => {
                 setTimeout(()=>{
                     const account = window.localStorage.account
                     dispatch(getNewAvator(account))
-                },500)
+                },1000)
                 
             }else{
                 dispatch(LoginTimeOut(res.data.code))
@@ -256,4 +256,69 @@ export const getNewAvator = (account) => {
 export const RealGetNewAvator = (newAvator) => ({
     type:constants.GETNEWAVATOR,
     newAvator
+})
+
+export const allowAccount = (flag) => ({
+    type:constants.ALLOWACCOUNT,
+    flag
+})
+
+export const allowPassword = (flag) => ({
+    type:constants.ALLOWPASSWORD,
+    flag
+})
+
+export const checkExistAccount = (account) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/checkExistAccount',{account}).then((res)=>{
+            const code = res.data.code
+            dispatch(RealcheckExistAccount(code))
+        })
+    }
+}
+
+export const RealcheckExistAccount = (code) => ({
+    type:constants.CHECKACCOUNT,
+    code
+})
+
+export const showCommentText = () => ({
+    type:constants.SHOWCOMMENTTEXT
+})
+
+export const commentChange = (value) => ({
+    type:constants.COMMENTCHANGE,
+    value
+})
+
+export const sendComment = (value,index) => {
+    return (dispatch) => {
+        const token = storage.token
+        axios.post('http://localhost:8003/personalAPI/blog/sendComment',{token,value,index},{
+            headers:{
+                'Authorization':token
+            }           
+        }).then((res)=>{
+            dispatch(RealSendComment(res.data.code,res.data.data))
+        })
+    }
+}
+
+export const RealSendComment = (code,data) => ({
+    type:constants.SENDCOMMENT,
+    code,
+    data
+})
+
+export const getCommentAjax = (id) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/getComment',{id}).then((res)=>{
+            dispatch(RealGetCommentAjax(res.data.data))
+        })
+    }
+}
+
+export const RealGetCommentAjax = (value) => ({
+    type:constants.GETCOMMENTAJAX,
+    value
 })

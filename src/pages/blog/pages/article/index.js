@@ -10,6 +10,7 @@ class Article extends Component{
     }
     componentDidMount(){
         this.props.enterOneBlog(this.props.match.params.id)
+        this.props.getCommentAjax(this.props.match.params.id)
     }
     render(){
         return (
@@ -20,11 +21,36 @@ class Article extends Component{
                         return(
                             <div key={index}>
                                 <div className="title">{item.title}</div>
-                                <div className="author">作者：{item.name}<span>ID：{item.uid}</span></div>
+                                <div className="author">作者：{item.name}<span>账号：{item.uid}</span><span>发表时间：{item.moment}</span></div>
                                 <div className="content" dangerouslySetInnerHTML = {{ __html: item.content }}></div>
                             </div>
                         )
                     })}
+                    <div className="commentWrapper">
+                        <div className="topTitle">评论区
+                            <span className="commentEntry" onClick={this.props.showCommentText}>{this.props.showCommentWord}</span>
+                        </div>
+                        {this.props.showComment?<div className="commentTextWrapper">
+                            <textarea placeholder="在此输入您的评论" className="commentText" onChange={this.props.commentChange} value={this.props.commentText}></textarea>
+                            <div className="sendComment" onClick={()=>this.props.sendComment(this.props.commentText,this.props.match.params.id)}>点击此处发表评论</div>
+                        </div>:''}
+                        {this.props.commentList.map((item,index)=>{
+                            return(
+                                <div className="wrapper" key={item.id}>
+                                    <div className="imgWrapper">
+                                        <img src={`http://localhost:8003/uploads/avator/${item.avator}`}></img>
+                                    </div>
+                                    <div className="rightWrapper">
+                                        <div className="userName">{item.nickname}<span>ID：{item.name}</span></div>
+                                        <div className="comment">{item.content}</div>
+                                        <div className="time">{item.moment}</div>
+                                    </div>
+                                </div>                                
+                            )
+                        })}
+                        
+                    </div>
+                    
                 </ArticleWrapper>
             </Fragment>
         )
@@ -33,15 +59,32 @@ class Article extends Component{
 
 const mapState = (state)=>{
     return{
-        enterBlog:state.blog.enterBlog
+        enterBlog:state.blog.enterBlog,
+        showComment:state.blog.showComment,
+        showCommentWord:state.blog.showCommentWord,
+        commentText:state.blog.commentText,
+        commentList:state.blog.commentList
     }
 }
 
 const mapDispath = (dispatch)=>{
     return{
+        sendComment(text,index){
+            dispatch(actionCreator.sendComment(text,index))
+        },
+        commentChange(e){
+            dispatch(actionCreator.commentChange(e.target.value))
+        },
+        showCommentText(){
+            dispatch(actionCreator.showCommentText())
+        },
         enterOneBlog(id){
             dispatch(actionCreator.enterOneBlog(id))
+        },
+        getCommentAjax(id){
+            dispatch(actionCreator.getCommentAjax(id))
         }
+        
     }
 }
 

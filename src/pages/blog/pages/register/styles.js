@@ -50,6 +50,18 @@ export const BottomWrapper = styled.div`
         outline:none;
         border-bottom:1px solid #ebebeb;
     }
+    .accountTips{
+        position:absolute;
+        margin-top:103px;
+        margin-left:5px;
+        color:red;
+    }
+    .passwordTips{
+        color:red;
+        position:absolute;
+        margin-top:185px;
+        margin-left:5px;
+    }
     .Password{
         border:none;
         outline:none;
@@ -70,7 +82,7 @@ export const BottomWrapper = styled.div`
         color:white;
         border-radius:5px;
         position:absolute;
-        margin-top:220px;
+        margin-top:250px;
         height:40px;
     }
 `

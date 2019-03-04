@@ -22,4 +22,77 @@ export const ArticleWrapper = styled.div`
             margin-left:25px;
         }
     }
+    .commentWrapper{
+        margin-top:30px;
+        width:850px;
+        .topTitle{
+            box-sizing:border-box;
+            padding:0 10px 0 10px;
+            line-height:30px;
+            height:30px;
+            width:850px;
+            background:#eeeeee;
+            .commentEntry{
+                float:right;
+                cursor:pointer;
+                color:green;
+            }
+        }
+        .commentTextWrapper{
+            .commentText{
+                width:844px;
+                height:60px;
+                outline:none;
+                font-size:15px;
+            }
+            .sendComment{
+                margin-top:5px;
+                text-align:right;
+                color:green;
+                cursor:pointer;
+            }
+        }
+        .wrapper{
+            padding-right:1px;
+            .imgWrapper{
+                margin-top:5px;
+                float:left;
+                width:50px;
+                height:50px;
+                background:grey;
+                overflow:hidden;
+                img{
+                    width:50px;
+                    height:50px;
+                }
+            }
+            .rightWrapper{
+                .userName{
+                    position:relative;
+                    top:5px;
+                    left:11px;
+                    span{
+                        float:right
+                        font-size:15px;
+                        margin-right:18px;
+                    }
+                }
+                .comment{
+                    min-height:30px;
+                    line-height:20px;
+                    position:relative;
+                    top:10px;
+                    padding-left:60px;
+                    padding-bottom:5px;    
+                }
+                .time{
+                    padding-right:10px;
+                    padding-bottom:5px;
+                    text-align:right;
+                    font-size:13px;
+                    border-bottom:1px solid black; 
+                }
+            }
+        }
+    }
 `

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import bg from '../../resource/bg.jpg'
 
 const CircleCommon = `
     @media only screen and (min-width:320px)and (max-width:1024px){
@@ -85,12 +84,9 @@ export const Circlefour = styled.div`
     ${CircleCommon}
 `
 
-export const Bgpic = styled.div`
-	background:url(${bg});
+export const Bgpic = styled.img`
 	width:100%;
-	min-width:15.64rem;
-	background-size:100% 100%;
-	background-repeat:no-repeat;
+	min-width:700px;
 	height:100%;
 	z-index:-1;
 	position:absolute;
