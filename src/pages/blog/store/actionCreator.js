@@ -322,3 +322,22 @@ export const RealGetCommentAjax = (value) => ({
     type:constants.GETCOMMENTAJAX,
     value
 })
+
+export const deleteComment = (id,postid) => {
+    const token = storage.token
+    return (dispatch) => {
+        axios.post('http://localhost:8003/personalAPI/blog/deleteComment',{id,postid},{
+            headers:{
+                'Authorization':token
+            }           
+        }).then((res)=>{
+            dispatch(RealDeleteComment(res.data.code,res.data.returnInfo))
+        })
+    }
+}
+
+export const RealDeleteComment = (code,returnInfo) => ({
+    type:constants.DELETECOMMENT,
+    code,
+    returnInfo
+})

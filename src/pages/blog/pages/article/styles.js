@@ -38,6 +38,11 @@ export const ArticleWrapper = styled.div`
                 color:green;
             }
         }
+        .noComment{
+            text-align:center;
+            margin-top:20px;
+            padding-bottom:15px;
+        }
         .commentTextWrapper{
             .commentText{
                 width:844px;
@@ -61,6 +66,7 @@ export const ArticleWrapper = styled.div`
                 height:50px;
                 background:grey;
                 overflow:hidden;
+                border-radius:5px;
                 img{
                     width:50px;
                     height:50px;
@@ -82,15 +88,22 @@ export const ArticleWrapper = styled.div`
                     line-height:20px;
                     position:relative;
                     top:10px;
-                    padding-left:60px;
-                    padding-bottom:5px;    
+                    padding-left:60px;    
                 }
                 .time{
+                    margin-top:10px
                     padding-right:10px;
                     padding-bottom:5px;
                     text-align:right;
                     font-size:13px;
-                    border-bottom:1px solid black; 
+                    border-bottom:1px solid black;
+                    div{
+                        display:inline-block;
+                        color:red;
+                        cursor:pointer;
+                        font-size:12px;
+                        margin-right:10px;
+                    } 
                 }
             }
         }

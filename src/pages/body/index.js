@@ -20,7 +20,7 @@ class Body extends Component {
                      {this.props.imgOnload?<CircleWrapper>
                         <a href="http://localhost:3005/resume" target="_blank"><Circleone><span>简历</span></Circleone></a>
                         <a href="https://github.com/JimmyLLLL" target="_blank"><Circletwo><span>github</span></Circletwo></a>
-                        <a href="http://localhost:3005/project" target="_blank"><Circlethree><span>项目</span></Circlethree></a>
+                        <a href="http://localhost:3005/project" target="_blank"><Circlethree><span>DEMO</span></Circlethree></a>
                         <a href="http://localhost:3005/blog" target="_blank"><Circlefour><span>BLOG</span></Circlefour></a>           
                      </CircleWrapper>:''}
                  </BodyWrapper>

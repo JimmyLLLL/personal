@@ -34,6 +34,7 @@ class Article extends Component{
                             <textarea placeholder="在此输入您的评论" className="commentText" onChange={this.props.commentChange} value={this.props.commentText}></textarea>
                             <div className="sendComment" onClick={()=>this.props.sendComment(this.props.commentText,this.props.match.params.id)}>点击此处发表评论</div>
                         </div>:''}
+                        {this.props.commentList.length?'':<div className="noComment">暂无评论噢~</div>}
                         {this.props.commentList.map((item,index)=>{
                             return(
                                 <div className="wrapper" key={item.id}>
@@ -43,7 +44,7 @@ class Article extends Component{
                                     <div className="rightWrapper">
                                         <div className="userName">{item.nickname}<span>ID：{item.name}</span></div>
                                         <div className="comment">{item.content}</div>
-                                        <div className="time">{item.moment}</div>
+                                        <div className="time">{(window.localStorage.account===item.name)&&(window.localStorage.account)?<div onClick={()=>{this.props.deleteComment(item.id,this.props.match.params.id)}}>删除</div>:''}{item.moment}</div>
                                     </div>
                                 </div>                                
                             )
@@ -69,8 +70,16 @@ const mapState = (state)=>{
 
 const mapDispath = (dispatch)=>{
     return{
+        deleteComment(id,postid){
+            let isSend = window.confirm("确定删除？")
+            if(isSend){
+                dispatch(actionCreator.deleteComment(id,postid))
+            }
+        },
         sendComment(text,index){
-            dispatch(actionCreator.sendComment(text,index))
+            if(text!==''){
+                dispatch(actionCreator.sendComment(text,index)) 
+            }    
         },
         commentChange(e){
             dispatch(actionCreator.commentChange(e.target.value))

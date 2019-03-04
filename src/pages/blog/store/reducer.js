@@ -41,21 +41,37 @@ const defaultState = {
 
 
 export default (state = defaultState,action)=>{
+    if(action.type === constants.DELETECOMMENT){
+        const newState = JSON.parse(JSON.stringify(state))
+        if(action.code===1){
+            console.log(action.returnInfo)
+            newState.commentList = action.returnInfo.reverse()
+            return newState
+        }else if(action.code===-1){
+            alert('身份信息过期')
+            storage.token = ''
+            storage.account = ''
+            storage.nickname = ''
+        }else if(action.code===0){
+            alert('服务器出错')
+        }
+    }
     if(action.type === constants.GETCOMMENTAJAX){
         const newState = JSON.parse(JSON.stringify(state))
         newState.commentList = action.value.reverse()
         return newState
     }
     if(action.type === constants.SENDCOMMENT){
+        const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){
-            let arr = state.commentList
-            arr.unshift(action.data)
-            const newState = JSON.parse(JSON.stringify(state))
-            newState.commentList = arr
+            newState.commentList = action.data.reverse()
             newState.commentText = ''
             alert('发表成功')
             return newState
         }else{
+            storage.token = ''
+            storage.account = ''
+            storage.nickname = ''
             alert('账号已过期')
         }
     }
@@ -131,6 +147,7 @@ export default (state = defaultState,action)=>{
             alert('登陆信息已经过期，请重新登录')
             storage.token=''
             storage.account=''
+            storage.nickname=''
             window.location.reload();
         }
 
@@ -202,6 +219,7 @@ export default (state = defaultState,action)=>{
             alert('登陆信息已经过期，请重新登录')
             storage.token=''
             storage.account=''
+            storage.nickname=''
             window.location.reload();
         }
     }
@@ -318,7 +336,9 @@ export default (state = defaultState,action)=>{
             if(action.auto!=='auto'){
                 alert('密码不正确')
             }
-            
+            storage.token = ''
+            storage.nickname = ''
+            storage.account = ''
         }
 
     }
