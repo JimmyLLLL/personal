@@ -7,7 +7,7 @@ class Header extends Component {
          return (
              <Fragment>          
                  <HeaderWrapper>
-                     JimmyLam
+                     {this.props.msg?this.props.msg:'JimmyLam'}
                  </HeaderWrapper>
              </Fragment>
         )       

@@ -1,5 +1,4 @@
 import * as constants from './constants';
-import axios from 'axios';
 const storage = window.localStorage;
 
 const defaultState = {
@@ -35,12 +34,19 @@ const defaultState = {
     showComment:false,
     showCommentWord:'我也评论两句~',
     commentText:'',
-    commentList:[]
+    commentList:[],
+    mobileNavShow:false,
+    navAnimate:'fadeInDown'
 };
 
 
 
 export default (state = defaultState,action)=>{
+    if(action.type === constants.HANDLENAVSHOW){
+        const newState = JSON.parse(JSON.stringify(state))
+        newState.mobileNavShow = !newState.mobileNavShow
+        return newState
+    }
     if(action.type === constants.DELETECOMMENT){
         const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){

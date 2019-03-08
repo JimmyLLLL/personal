@@ -42,7 +42,7 @@ class Article extends Component{
                                         <img src={`http://localhost:8003/uploads/avator/${item.avator}`}></img>
                                     </div>
                                     <div className="rightWrapper">
-                                        <div className="userName">{item.nickname}<span>ID：{item.name}</span></div>
+                                        <div className="userName" onClick={()=>{this.props.otherUserCenter(item.name)}}>{item.nickname}<span>ID：{item.name}</span></div>
                                         <div className="comment">{item.content}</div>
                                         <div className="time">{(window.localStorage.account===item.name)&&(window.localStorage.account)?<div onClick={()=>{this.props.deleteComment(item.id,this.props.match.params.id)}}>删除</div>:''}{item.moment}</div>
                                     </div>
@@ -70,6 +70,11 @@ const mapState = (state)=>{
 
 const mapDispath = (dispatch)=>{
     return{
+        otherUserCenter(name){
+            const newWindow = window.open('about:blank');
+            newWindow.location.href='http://localhost:3005/blog/otherUserCenter/'+name;
+
+        },
         deleteComment(id,postid){
             let isSend = window.confirm("确定删除？")
             if(isSend){

@@ -3,14 +3,12 @@ import {getAvailHeightAppMasking} from '../../function.js'
 export const ResumeWrapper = styled.div`
     width:1040px;
     margin:0 auto;
-    height:100%;
 `
 
 export const BodyWrapper = styled.div`
     width:950px;
     margin:0 auto;
     margin-top:35px;
-    height:100px;
 `
 
 export const Masking = styled.div`
@@ -27,4 +25,11 @@ export const Masking = styled.div`
     font-size:20px;
     color:white;
     line-height:${getAvailHeightAppMasking()}
+`
+
+export const Copyright = styled.div`
+    position:absolute;
+    bottom:-45px;
+    width:100%;
+    text-align:center;
 `

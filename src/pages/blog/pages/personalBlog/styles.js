@@ -1,5 +1,15 @@
 import styled from 'styled-components'
 
+export const Bg = styled.div`
+    width:100%;
+    position:absolute;
+    min-height:100%;
+    background-color:#f6f6f6;
+    top:0px;
+    z-index:-1;
+    height:100%;
+    overflow:scroll;
+`
 export const BlogWrapper = styled.div`
     width:850px;
     margin:0 auto;
@@ -64,29 +74,29 @@ export const LeftHeader = styled.div`
 `
 
 export const LeftContent = styled.div`
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        padding:10px;
+    }
     box-sizing:border-box;
-    word-wrap:break-word
     width:100%;
     padding:16px;
     border-bottom:1px solid #f6f6f6;
     background-color:#ffffff;
-
     a{
         text-decoration: none;
         color:black;
-    }
-    @media only screen and (min-width:320px)and (max-width:1024px){
-        padding:10px;
     }
 `
 
 export const LeftContentHeader = styled.div`
     font-size:16px;
     color:black;
-    word-wrap:break-word;
 `
 
 export const LeftContentCon = styled.div`
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        line-height:16px;
+    }
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -97,11 +107,15 @@ export const LeftContentCon = styled.div`
     font-size:14px;
     margin-top:16px;
     line-height:15px;
-    @media only screen and (min-width:320px)and (max-width:1024px){
-        line-height:16px;
-    }
 `
 export const LeftContentBottom = styled.div`
+    .deleteBlog{
+        font-size:11px;
+        margin-right:10px;
+        color:red;
+        float:right;
+        cursor:pointer;
+    }
     margin-top:20px;
     font-size:10px;
     i {

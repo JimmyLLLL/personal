@@ -34,7 +34,7 @@ class Center extends Component{
                         <div className="submit" onClick={this.props.avatorSubmitValid.bind(this)}>请先点击上面头像以更换新的图片，再点击此处以进行提交</div>
                     </form>                                   
                     <div className="key">账号: {this.props.account}</div><div className="value red">账号一次注册不可更改噢~</div>
-                    <div className="key">BLOG</div><div className="value red">这是一条时光隧道，在此见证你过去的记录</div>
+                    <div className="key">BLOG</div><a href="http://localhost:3005/blog/personalBlog" target="_blank" className="blogA"><div className="value red">这是一条时光隧道，在此见证你过去的记录</div></a>
                     <div className="key">昵称: {this.props.AjaxNickname}</div><input className="value" placeholder="在此输入新昵称" onChange={this.props.nicknameChange} onKeyPress={this.EnterCenter} value={this.props.nickname}></input>
                     <div className="key">个性签名: {this.props.AjaxWord}</div><input className="value" placeholder="在此输入新个性签名" onChange={this.props.wordChange} onKeyPress={this.EnterCenter} value={this.props.word}></input>
                     <div className="btn" onClick={()=>this.props.PersonalInfoChange(this.props.word,this.props.nickname,this.props.AjaxNickname,this.props.AjaxWord)}>提交信息</div>

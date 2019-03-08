@@ -5,6 +5,8 @@ import Resume from './pages/resume';
 import Project from './pages/project'
 import Blog from './pages/blog'
 import Article from './pages/blog/pages/article'
+import Personalblog from './pages/blog/pages/personalBlog'
+import Otherusercenter from './pages/blog/pages/otherUserCenter'
 import { BrowserRouter,Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -21,6 +23,9 @@ class App extends Component {
               <Route path="/project" exact component={Project}></Route>
               <Route path="/blog" exact component={Blog}></Route>
               <Route path="/blog/article/:id" exact component={Article}></Route>
+              <Route path="/blog/personalBlog/:name" exact component={Personalblog}></Route>
+              <Route path="/blog/personalBlog" exact component={Personalblog}></Route>
+              <Route path="/blog/otherUserCenter/:name" exact component={Otherusercenter}></Route>
             </div>
           </BrowserRouter>         
         </Provider>

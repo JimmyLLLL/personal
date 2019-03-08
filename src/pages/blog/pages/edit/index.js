@@ -35,10 +35,10 @@ const mapDispath = (dispatch)=>{
             dispatch(actionCreator.EditContentChange(e.target.value))
         },
         btnClick(title,content){
-            dispatch(actionCreator.EditBtnClick(title,content))
+            if(title!==''&&content!==''){
+                dispatch(actionCreator.EditBtnClick(title,content))    
+            }
         }
-
-
     }
 }
 

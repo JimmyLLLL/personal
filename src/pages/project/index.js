@@ -11,9 +11,8 @@ class Project extends Component {
                         <iframe src="http://www.JinmyLam.xin/canvasGame" width="375" height="667" className="canvasGame" title="canvasGame"></iframe>
                         <iframe src="http://www.JinmyLam.xin/JimmyNotes" width="375" height="667" className="JimmyNotes" title="JimmtNotes"></iframe>
                     </div>
-                    <div className="projectOneTitle">Demo：深大荔知新版公文通 && 小工具整合</div>
+                    <div className="projectOneTitle">Demo：深大荔知新版公文通</div>
                     <a className="aEle" href="http://www.JinmyLam.xin/SZUNewsBeta" target="_blank" rel="noopener noreferrer">深大荔知公文通（移动端）</a><span className="aSpan">← click</span>
-                    <a className="aEle" href="http://www.JinmyLam.xin/JimmyTool" target="_blank" rel="noopener noreferrer">小工具整合（PC）</a><span className="aSpan">← click</span>
                     
                  </ProjectWrapper>
 

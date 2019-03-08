@@ -6,6 +6,8 @@ import Bottom from '../../common/bottom';
 import Header from '../../common/header';
 import bg from '../../resource/bg.jpg'
 import * as actionCreator from './store/actionCreator';
+import 'animate.css'
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Body extends Component {
     render() {
@@ -17,12 +19,20 @@ class Body extends Component {
                     <Bottom></Bottom>
                 </BgpicWrapper>       
                  <BodyWrapper>
-                     {this.props.imgOnload?<CircleWrapper>
-                        <a href="http://localhost:3005/resume" target="_blank"><Circleone><span>简历</span></Circleone></a>
-                        <a href="https://github.com/JimmyLLLL" target="_blank"><Circletwo><span>github</span></Circletwo></a>
-                        <a href="http://localhost:3005/project" target="_blank"><Circlethree><span>DEMO</span></Circlethree></a>
-                        <a href="http://localhost:3005/blog" target="_blank"><Circlefour><span>BLOG</span></Circlefour></a>           
-                     </CircleWrapper>:''}
+                    <ReactCSSTransitionGroup
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionEnterTimeout={1000}
+                        transitionLeaveTimeout={1000}
+                        transitionName="animated"
+                    >
+                            {this.props.imgOnload?<CircleWrapper key="mainItem" className="animated fadeInDown">
+                                <a href="http://localhost:3005/resume" target="_blank"><Circleone><span>简历</span></Circleone></a>
+                                <a href="https://github.com/JimmyLLLL" target="_blank"><Circletwo><span>github</span></Circletwo></a>
+                                <a href="http://localhost:3005/project" target="_blank"><Circlethree><span>Demo</span></Circlethree></a>
+                                <a href="http://localhost:3005/blog" target="_blank"><Circlefour><span>BLOG</span></Circlefour></a>           
+                            </CircleWrapper>:''}                        
+                    </ReactCSSTransitionGroup>
                  </BodyWrapper>
              </Fragment>
         )       

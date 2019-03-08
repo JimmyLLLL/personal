@@ -1,5 +1,5 @@
 import React,{ Fragment } from 'react';
-import { ResumeWrapper,BodyWrapper,Masking } from './styles';
+import { ResumeWrapper,BodyWrapper,Masking,Copyright } from './styles';
 import HeaderContent from './components/Header'
 import Left from './components/Left'
 import Right from './components/Right'
@@ -17,6 +17,7 @@ const Resume = (props) => {
                     <Right></Right>
                 </BodyWrapper>
             </ResumeWrapper>
+            <Copyright>设计样式版权所有：设计师Absinthe</Copyright>
         </Fragment>         
     )
    

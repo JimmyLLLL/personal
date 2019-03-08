@@ -1,46 +1,32 @@
 import styled from 'styled-components'
 
+
+export const Bg = styled.div`
+    width:100%;
+    position:absolute;
+    min-height:100%;
+    background-color:#f6f6f6;
+    top:0px;
+    z-index:-1;
+    height:100%;
+    overflow:scroll;
+`
 export const CenterWrapper = styled.div`
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        width:100%;
+        box-sizing:border-box;
+        margin-top:0px;
+        border-radius:0px;
+        height:100%;
+    }
     width:850px;
     margin:0 auto;
     margin-top:60px;
     background-color:white;
-    padding:10px;
-    @media only screen and (min-width:320px)and (max-width:1024px){
-        width:100%;
-        box-sizing:border-box;
-        margin-top:35px;
-    }
+    border-radius:10px;
+    color:black;
+    padding:30px;
     .wrapper{
-        .noIframe{
-            width:0px;
-            height:0px;
-        }
-        form{
-            .file{
-                display:none;
-            }
-            .submit{
-                @media only screen and (min-width:320px)and (max-width:1024px){
-                    width:100%;
-                    box-sizing:border-box;
-                }
-                text-align:center;
-                font-size:15px;
-                border-radius:5px;
-                color:white;
-                padding:5px;
-                margin-top:30px;
-                background:green;
-                width:420px;
-            }
-            .realSubmit{
-                display:none;
-            }
-            .username{
-                display:none
-            }
-        }
         background-color:blue;
         line-height:20px;
         .key:not(:first-child){
@@ -62,16 +48,6 @@ export const CenterWrapper = styled.div`
         }
         .red{
             color:blue;
-        }
-        .btn{
-            margin-top:50px;
-            width:100%;
-            height:30px;
-            line-height:30px;
-            color:white;
-            border-radius:5px;
-            text-align:center;
-            background-color:green;
         }
         .avatarWrapper{
             @media only screen and (min-width:320px)and (max-width:1024px){

@@ -341,3 +341,7 @@ export const RealDeleteComment = (code,returnInfo) => ({
     code,
     returnInfo
 })
+
+export const handleNavShow = () => ({
+    type:constants.HANDLENAVSHOW
+})

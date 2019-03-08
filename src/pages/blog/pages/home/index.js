@@ -25,11 +25,16 @@ class Home extends Component {
                                 <LeftContent key={index}>
                                     <a href={`blog/article/${item.id}`} target="_blank"><LeftContentHeader>{item.title}</LeftContentHeader></a>
                                     <a href={`blog/article/${item.id}`} target="_blank"><LeftContentCon dangerouslySetInnerHTML = {{ __html: item.content }}></LeftContentCon></a>
-                                    <LeftContentBottom><i className="iconfont icon-aixin1"></i><span className="bottomSpan">{item.pv}</span><i className="iconfont icon-pinglun secondI"></i><span className="bottomSpan">评论({item.comments})</span></LeftContentBottom>
+                                    <LeftContentBottom>
+                                        <i className="iconfont icon-aixin1"></i>
+                                        <span className="bottomSpan">{item.pv}</span>
+                                        <i className="iconfont icon-pinglun secondI"></i>
+                                        <span className="bottomSpan">评论({item.comments})</span>
+                                    </LeftContentBottom>
                                 </LeftContent>
                             )
                         })}
-                        {this.props.firstLoadingFinish?<div className="loading">{this.props.LoadingWord}</div>:''}
+                        {this.props.firstLoadingFinish&&this.props.blogContent.length>=10?<div className="loading">{this.props.LoadingWord}</div>:''}
                     </LeftWrapper>
                     <RightWrapper>
                         <ul className="rightUl">

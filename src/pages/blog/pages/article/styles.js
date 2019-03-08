@@ -1,21 +1,41 @@
 import styled from 'styled-components'
 
 export const ArticleWrapper = styled.div`
+    @media only screen and (min-width:320px)and (max-width:1024px){
+        width:100%;
+        padding:0 10px;
+        box-sizing:border-box;
+        margin-top:35px;
+    }
     width:850px;
     margin:0 auto;
     margin-top:60px;
     position:relative;
     height:100%;
     .title{
+        @media only screen and (min-width:320px)and (max-width:1024px){
+            margin-top:50px;
+            line-height:30px;
+            font-size:25px;
+        }
         font-size:30px;
         line-height:50px;
         text-align:center;
+        word-wrap:break-word
     }
     .content{
+        word-wrap:break-word
         font-size:17px;
         line-height:25px;
+        @media only screen and (min-width:320px)and (max-width:1024px){
+            margin-top:15px;
+        }
     }
     .author{
+        @media only screen and (min-width:320px)and (max-width:1024px){
+            line-height:25px;
+            margin-top:15px;
+        }
         text-align:center;
         line-height:35px;
         span{
@@ -24,13 +44,13 @@ export const ArticleWrapper = styled.div`
     }
     .commentWrapper{
         margin-top:30px;
-        width:850px;
+        width:100%;
         .topTitle{
             box-sizing:border-box;
             padding:0 10px 0 10px;
             line-height:30px;
             height:30px;
-            width:850px;
+            width:100%;
             background:#eeeeee;
             .commentEntry{
                 float:right;
@@ -45,6 +65,9 @@ export const ArticleWrapper = styled.div`
         }
         .commentTextWrapper{
             .commentText{
+                @media only screen and (min-width:320px)and (max-width:1024px){
+                    width:100%;
+                }
                 width:844px;
                 height:60px;
                 outline:none;
@@ -74,6 +97,7 @@ export const ArticleWrapper = styled.div`
             }
             .rightWrapper{
                 .userName{
+                    cursor:pointer;
                     position:relative;
                     top:5px;
                     left:11px;
