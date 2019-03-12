@@ -56,6 +56,7 @@ export const Bg = styled.div`
     z-index:-1;
     height:100%;
     overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 `
 
 export const LoginLogout = styled.ul`

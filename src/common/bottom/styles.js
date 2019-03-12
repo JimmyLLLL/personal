@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BottomWrapper = styled.div`
-	position:absolute;
+	position:fixed;
 	bottom:0;
 	height:40px;
 	line-height:40px;

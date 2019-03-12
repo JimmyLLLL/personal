@@ -1,13 +1,9 @@
-import React,{ Component,Fragment } from 'react';
+import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreator from '../../store/actionCreator';
 import { EditWrapper } from './styles';
 
 class Edit extends Component{
-    constructor(props){
-        super(props)
-    }
-
     render(){
         return (
             <EditWrapper>

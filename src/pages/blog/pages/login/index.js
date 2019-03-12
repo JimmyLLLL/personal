@@ -1,4 +1,4 @@
-import React,{ Component,Fragment } from 'react';
+import React,{ Component } from 'react';
 import { LoginWrapper,LoginMasking,TopLogo,AppIntro,BottomWrapper} from './styles'
 import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actionCreator'

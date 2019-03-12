@@ -7,7 +7,7 @@ import Blog from './pages/blog'
 import Article from './pages/blog/pages/article'
 import Personalblog from './pages/blog/pages/personalBlog'
 import Otherusercenter from './pages/blog/pages/otherUserCenter'
-import { BrowserRouter,Route } from 'react-router-dom';
+import { Route,HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -16,7 +16,7 @@ class App extends Component {
     return (
         <Provider store={store}>
           <GlobalStyle/>
-          <BrowserRouter>
+          <HashRouter>
             <div>
               <Route path="/" exact component={Body}></Route>
               <Route path="/resume" exact component={Resume}></Route>
@@ -27,7 +27,7 @@ class App extends Component {
               <Route path="/blog/personalBlog" exact component={Personalblog}></Route>
               <Route path="/blog/otherUserCenter/:name" exact component={Otherusercenter}></Route>
             </div>
-          </BrowserRouter>         
+          </HashRouter>         
         </Provider>
     );
   }

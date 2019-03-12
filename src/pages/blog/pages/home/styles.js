@@ -70,7 +70,6 @@ export const LeftContent = styled.div`
     padding:16px;
     border-bottom:1px solid #f6f6f6;
     background-color:#ffffff;
-
     a{
         text-decoration: none;
         color:black;

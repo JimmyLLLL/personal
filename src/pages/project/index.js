@@ -2,6 +2,9 @@ import React,{ Component,Fragment } from 'react';
 import { ProjectWrapper } from './styles'
 
 class Project extends Component {
+    componentDidMount(){
+        document.title="JimmyLam的Demo"
+    }
     render() {
          return (
              <Fragment>

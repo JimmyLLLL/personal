@@ -9,6 +9,7 @@ export const Bg = styled.div`
     z-index:-1;
     height:100%;
     overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 `
 export const BlogWrapper = styled.div`
     width:850px;

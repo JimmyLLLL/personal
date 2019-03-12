@@ -36,8 +36,8 @@ class Personalblog extends Component {
                             {this.props.blogContent.map((item,index)=>{
                                 return(
                                     <LeftContent key={index}>
-                                        <a href={`article/${item.id}`} target="_blank"><LeftContentHeader>{item.title}</LeftContentHeader></a>
-                                        <a href={`article/${item.id}`} target="_blank"><LeftContentCon dangerouslySetInnerHTML = {{ __html: item.content }}></LeftContentCon></a>
+                                        <a href={`/#/blog/article/${item.id}`} target="_blank"><LeftContentHeader>{item.title}</LeftContentHeader></a>
+                                        <a href={`/#/blog/article/${item.id}`} target="_blank"><LeftContentCon dangerouslySetInnerHTML = {{ __html: item.content }}></LeftContentCon></a>
                                         <LeftContentBottom>
                                             <i className="iconfont icon-aixin1"></i>
                                             <span className="bottomSpan">{item.pv}</span>

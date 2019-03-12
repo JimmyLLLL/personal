@@ -26,10 +26,3 @@ export const Masking = styled.div`
     color:white;
     line-height:${getAvailHeightAppMasking()}
 `
-
-export const Copyright = styled.div`
-    position:absolute;
-    bottom:-45px;
-    width:100%;
-    text-align:center;
-`

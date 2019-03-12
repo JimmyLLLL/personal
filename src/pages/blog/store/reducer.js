@@ -130,7 +130,7 @@ export default (state = defaultState,action)=>{
     }
     if(action.type === constants.GETNEWAVATOR){
         const newState = JSON.parse(JSON.stringify(state))
-        newState.avator = 'http://localhost:8003/uploads/avator/'+action.newAvator
+        newState.avator = 'http://www.jinmylam.xin:8003/uploads/avator/'+action.newAvator
         return newState
     }
     if(action.type === constants.AVATORUSER){
@@ -187,8 +187,8 @@ export default (state = defaultState,action)=>{
         const newState = JSON.parse(JSON.stringify(state))
         if(action.code === 1){
             const data = action.data
-            if(data.length!=0){
-                if(action.first=='first'){
+            if(data.length!==0){
+                if(action.first==='first'){
                     newState.firstLoadingFinish = true
                     newState.blogContent = [...data]
                     return newState              
@@ -334,7 +334,7 @@ export default (state = defaultState,action)=>{
             newState.account = action.account
             newState.readyLogin = true
             newState.showLogin = false
-            newState.avator = 'http://localhost:8003/uploads/avator/'+action.avator
+            newState.avator = 'http://www.jinmylam.xin:8003/uploads/avator/'+action.avator
             return newState           
         }else if(action.code===-2){
             alert('用户不存在')

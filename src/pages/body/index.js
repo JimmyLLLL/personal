@@ -10,6 +10,9 @@ import 'animate.css'
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Body extends Component {
+    componentDidMount(){
+        document.title="JimmyLam"
+    }
     render() {
          return (
              <Fragment>
@@ -27,10 +30,10 @@ class Body extends Component {
                         transitionName="animated"
                     >
                             {this.props.imgOnload?<CircleWrapper key="mainItem" className="animated fadeInDown">
-                                <a href="http://localhost:3005/resume" target="_blank"><Circleone><span>简历</span></Circleone></a>
+                                <a href="http://www.jinmylam.xin/#/resume" target="_blank"><Circleone><span>简历</span></Circleone></a>
                                 <a href="https://github.com/JimmyLLLL" target="_blank"><Circletwo><span>github</span></Circletwo></a>
-                                <a href="http://localhost:3005/project" target="_blank"><Circlethree><span>Demo</span></Circlethree></a>
-                                <a href="http://localhost:3005/blog" target="_blank"><Circlefour><span>BLOG</span></Circlefour></a>           
+                                <a href="http://www.jinmylam.xin/#/project" target="_blank"><Circlethree><span>Demo</span></Circlethree></a>
+                                <a href="http://www.jinmylam.xin/#/blog" target="_blank"><Circlefour><span>BLOG</span></Circlefour></a>           
                             </CircleWrapper>:''}                        
                     </ReactCSSTransitionGroup>
                  </BodyWrapper>

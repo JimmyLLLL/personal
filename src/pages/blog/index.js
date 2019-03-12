@@ -16,6 +16,7 @@ class Blog extends Component {
         this.handleScroll = this.handleScroll.bind(this)
     }
     componentDidMount(){
+        document.title="JimmyLam的博客"
         this.props.memoryLogin()
         if(document.documentElement.clientHeight>1024){
             const NoData = this.props.NoData

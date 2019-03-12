@@ -4,7 +4,7 @@ import * as constants from './constants'
 const storage = window.localStorage
 export const getBlogData = (account,page,first) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/personalGetBlog',{page,account}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/personalGetBlog',{page,account}).then((res)=>{
             const code = res.data.code
             const data = res.data.data
             dispatch(RealGetBlogData(code,data,first))
@@ -22,7 +22,7 @@ export const RealGetBlogData = (code,data,first) => ({
 export const handleBlogDelete = (id) => {
     return (dispatch) => {
         const token = storage.token
-        axios.post('http://localhost:8003/personalAPI/blog/handleBlogDelete',{id},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/handleBlogDelete',{id},{
             headers:{
                 'Authorization':token
             }           

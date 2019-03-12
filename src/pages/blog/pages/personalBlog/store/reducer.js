@@ -1,5 +1,4 @@
 import * as constants from './constants';
-const storage = window.localStorage;
 const defaultState = {
     nowSelect:'技术专栏',
     selectList:[{key:'技术专栏',className:'selectLi'},{key:'旅行',className:''},{key:'心境',className:''}],
@@ -13,7 +12,6 @@ const defaultState = {
 
 export default (state = defaultState,action)=>{
     if(action.type === constants.BLOGDELETE){
-        const newState = JSON.parse(JSON.stringify(state))
         if(action.code===1){
             window.location.reload();
         }else if(action.code===0){
@@ -28,8 +26,8 @@ export default (state = defaultState,action)=>{
         const newState = JSON.parse(JSON.stringify(state))
         if(action.code === 1){
             const data = action.data
-            if(data.length!=0){
-                if(action.first=='first'){
+            if(data.length!==0){
+                if(action.first==='first'){
                     newState.firstLoadingFinish = true
                     newState.blogContent = [...data]
                     return newState              

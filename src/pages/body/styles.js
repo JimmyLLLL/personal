@@ -21,25 +21,28 @@ const CircleCommon = `
     font-size:25px;
     transition:.3s;
     cursor: pointer;
-    span:after {
-        transition: 0.3s;
-        content: '»';
-        position: absolute;
-        opacity:0;
-        top: 0;
-        right: 50px;
-      }
-    &:hover {
-        background-color:green;
-        width:180px;
-        span:after{
-            opacity:1;
-        };
-        span{
+    @media only screen and (min-width:1024px){
+        span:after {
             transition: 0.3s;
-            padding-right:30px;
+            content: '»';
+            position: absolute;
+            opacity:0;
+            top: 0;
+            right: 50px;
         }
-      }
+        &:hover {
+            background-color:green;
+            width:180px;
+            span:after{
+                opacity:1;
+            };
+            span{
+                transition: 0.3s;
+                padding-right:30px;
+            }
+        }
+    } 
+
 
 `
 
@@ -89,7 +92,7 @@ export const Bgpic = styled.img`
 	min-width:700px;
 	height:100%;
 	z-index:-1;
-	position:absolute;
+    position:fixed;
 `
 
 export const BgpicWrapper = styled.div`

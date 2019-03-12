@@ -1,25 +1,29 @@
-import React,{ Fragment } from 'react';
-import { ResumeWrapper,BodyWrapper,Masking,Copyright } from './styles';
+import React,{ Fragment,Component } from 'react';
+import { ResumeWrapper,BodyWrapper,Masking } from './styles';
 import HeaderContent from './components/Header'
 import Left from './components/Left'
 import Right from './components/Right'
 import { connect } from 'react-redux'
 import {actionCreator} from './components/Header/store'
 
-const Resume = (props) => {
-    return(
-        <Fragment>
-            {props.isShow?<Masking onClick={props.handleMaskingShow} onTouchMove={props.handleMaskingShow}>滑动以完整浏览内容</Masking>:''}
-            <ResumeWrapper>
-                <HeaderContent></HeaderContent>
-                <BodyWrapper>
-                    <Left></Left>
-                    <Right></Right>
-                </BodyWrapper>
-            </ResumeWrapper>
-            <Copyright>设计样式版权所有：设计师Absinthe</Copyright>
-        </Fragment>         
-    )
+class Resume extends Component{
+    componentDidMount(){
+        document.title="JimmyLam的求学之路"
+    }
+    render(){
+        return(
+            <Fragment>
+                {this.props.isShow?<Masking onClick={this.props.handleMaskingShow} onTouchMove={this.props.handleMaskingShow}>此页用PC观看效果最佳</Masking>:''}
+                <ResumeWrapper>
+                    <HeaderContent></HeaderContent>
+                    <BodyWrapper>
+                        <Left></Left>
+                        <Right></Right>
+                    </BodyWrapper>
+                </ResumeWrapper>
+            </Fragment>            
+        )
+    }
    
 }
 

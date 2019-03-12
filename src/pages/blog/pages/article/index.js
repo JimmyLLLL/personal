@@ -39,7 +39,7 @@ class Article extends Component{
                             return(
                                 <div className="wrapper" key={item.id}>
                                     <div className="imgWrapper">
-                                        <img src={`http://localhost:8003/uploads/avator/${item.avator}`}></img>
+                                        <img src={`http://www.jinmylam.xin:8003/uploads/avator/${item.avator}`}></img>
                                     </div>
                                     <div className="rightWrapper">
                                         <div className="userName" onClick={()=>{this.props.otherUserCenter(item.name)}}>{item.nickname}<span>ID：{item.name}</span></div>
@@ -72,7 +72,7 @@ const mapDispath = (dispatch)=>{
     return{
         otherUserCenter(name){
             const newWindow = window.open('about:blank');
-            newWindow.location.href='http://localhost:3005/blog/otherUserCenter/'+name;
+            newWindow.location.href='http://www.jinmylam.xin/#/blog/otherUserCenter/'+name;
 
         },
         deleteComment(id,postid){

@@ -1,5 +1,4 @@
 import * as constants from './constants';
-const storage = window.localStorage;
 
 const defaultState = {
    userInfo:{}

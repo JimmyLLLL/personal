@@ -3,7 +3,7 @@ import * as constants from './constants'
 
 export const getUserData = (name) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/findDataByName',{name}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/findDataByName',{name}).then((res)=>{
             const code = res.data.code
             const data = res.data.data
             dispatch(RealGetUserData(code,data))

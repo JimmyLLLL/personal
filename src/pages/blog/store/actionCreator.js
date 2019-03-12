@@ -30,7 +30,7 @@ export const PasswordChange = (value) =>({
 
 export const LoginAJAX = (account,password)=>{
     return (dispatch)=>{
-        axios.post('http://localhost:8003/personalAPI/blog/login',{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/login',{
             account,
             password
         }).then((res)=>{
@@ -58,7 +58,7 @@ export const RealLoginAJAX = (code,token,account,nickname,word,auto='',avator)=>
 
 export const RegisterAJAX = (account,password) => {
     return (dispatch)=>{
-        axios.post('http://localhost:8003/personalAPI/blog/register',{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/register',{
             account,
             password
     }).then((res)=>{
@@ -107,7 +107,7 @@ export const EditBtnClick = (title,content) => {
     const token = storage.token
     const nickname = storage.nickname
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/sendEdit',{title,content,nickname},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/sendEdit',{title,content,nickname},{
             headers:{
                 'Authorization':token
             }
@@ -125,7 +125,7 @@ export const RealEditBtnClick = (value) => ({
 
 export const getBlogData = (page,first)=> {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/getBlog',{page}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/getBlog',{page}).then((res)=>{
             const code = res.data.code
             const data = res.data.data
             dispatch(RealGetBlogData(code,data,first))
@@ -147,7 +147,7 @@ export const getNetHeight = (height) => ({
 
 export const enterOneBlog = (id) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/enterBlog',{id}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/enterBlog',{id}).then((res)=>{
             const code = res.data.code
             const data = res.data.data
             dispatch(RealEnterOneBlog(code,data))
@@ -175,7 +175,7 @@ export const wordChange = (value) => ({
 export const PersonalInfoChange = (word,nickname) => {
     const token = storage.token
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/PersonalInfoChange',{word,nickname},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/PersonalInfoChange',{word,nickname},{
             headers:{
                 'Authorization':token
             }
@@ -196,7 +196,7 @@ export const RealPersonalInfoChange = (code,data) => ({
 
 export const memoryLogin = (token) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/memoryLogin',{},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/memoryLogin',{},{
             headers:{
                 'Authorization':token
             }           
@@ -216,7 +216,7 @@ export const memoryLogin = (token) => {
 export const avatorSubmitValid = (submitDom,noIframe) => {
     const token = storage.token
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/uploadAvatorValid',{},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/uploadAvatorValid',{},{
             headers:{
                 'Authorization':token
             }           
@@ -247,7 +247,7 @@ export const AvatorUser = (avatorUser) => ({
 
 export const getNewAvator = (account) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/getNewAvator',{account}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/getNewAvator',{account}).then((res)=>{
             const avator = res.data.avator
             dispatch(RealGetNewAvator(avator))
         })
@@ -270,7 +270,7 @@ export const allowPassword = (flag) => ({
 
 export const checkExistAccount = (account) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/checkExistAccount',{account}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/checkExistAccount',{account}).then((res)=>{
             const code = res.data.code
             dispatch(RealcheckExistAccount(code))
         })
@@ -294,7 +294,7 @@ export const commentChange = (value) => ({
 export const sendComment = (value,index) => {
     return (dispatch) => {
         const token = storage.token
-        axios.post('http://localhost:8003/personalAPI/blog/sendComment',{token,value,index},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/sendComment',{token,value,index},{
             headers:{
                 'Authorization':token
             }           
@@ -312,7 +312,7 @@ export const RealSendComment = (code,data) => ({
 
 export const getCommentAjax = (id) => {
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/getComment',{id}).then((res)=>{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/getComment',{id}).then((res)=>{
             dispatch(RealGetCommentAjax(res.data.data))
         })
     }
@@ -326,7 +326,7 @@ export const RealGetCommentAjax = (value) => ({
 export const deleteComment = (id,postid) => {
     const token = storage.token
     return (dispatch) => {
-        axios.post('http://localhost:8003/personalAPI/blog/deleteComment',{id,postid},{
+        axios.post('http://www.jinmylam.xin:8003/personalAPI/blog/deleteComment',{id,postid},{
             headers:{
                 'Authorization':token
             }           
